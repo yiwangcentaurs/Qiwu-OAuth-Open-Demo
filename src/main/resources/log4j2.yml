@@ -1,0 +1,26 @@
+Configuration:
+    Properties:
+        Property:
+            - name: PID
+              value: '?????'
+            - name: LOG_EXCEPTION_CONVERSION_WORD
+              value: '%xwEx'
+            - name: LOG_LEVEL_PATTERN
+              value: '%5p'
+            - name: LOG_PATTERN
+              value: '%d{ISO8601}{GMT+8} ${LOG_LEVEL_PATTERN} ${sys:PID} --- [%15.15t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}'
+    Appenders:
+        Console:
+            name: CONSOLE
+            target: SYSTEM_OUT
+            PatternLayout:
+                Pattern: '${sys:LOG_PATTERN}'
+        Sentry:
+            name: Sentry
+    Loggers:
+        Root:
+            level: info
+            AppenderRef:
+                - ref: CONSOLE
+                - ref: Sentry
+                  level: warn
