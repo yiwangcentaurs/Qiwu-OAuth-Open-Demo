@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.centaurstech'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-starter")
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-jetty')
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    //compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+
+    //oauth2.0
+    //客户端
+    compile group: 'org.apache.oltu.oauth2', name: 'org.apache.oltu.oauth2.client', version: '0.31'
+    //服务端
+    compile group: 'org.apache.oltu.oauth2', name: 'org.apache.oltu.oauth2.resourceserver', version: '0.31'
+    //授权服务端
+    compile group: 'org.apache.oltu.oauth2', name: 'org.apache.oltu.oauth2.authzserver', version: '0.31'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
